@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Security Log Analysis Report</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
+  h1 { color: #58a6ff; border-bottom: 2px solid #21262d; padding-bottom: 10px; }
+  h2 { color: #79c0ff; margin-top: 30px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
+  .box { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 15px; text-align: center; }
+  .box .num { font-size: 2em; font-weight: bold; color: #58a6ff; }
+  .box .lbl { font-size: 0.85em; color: #8b949e; margin-top: 5px; }
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+  th { background: #21262d; color: #79c0ff; padding: 10px; text-align: left; border: 1px solid #30363d; }
+  td { padding: 8px 10px; border: 1px solid #21262d; font-size: 0.9em; }
+  tr:nth-child(even) { background: #161b22; }
+  tr:hover { background: #1c2128; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; font-weight: bold; }
+  .red { background: #3d1c1c; color: #ff7b72; border: 1px solid #ff7b72; }
+  .orange { background: #2d1a0e; color: #f0883e; border: 1px solid #f0883e; }
+  .yellow { background: #2d2008; color: #d29922; border: 1px solid #d29922; }
+  .green { background: #0d2818; color: #3fb950; border: 1px solid #3fb950; }
+  .footer { margin-top: 40px; color: #8b949e; font-size: 0.85em; border-top: 1px solid #21262d; padding-top: 15px; }
+</style>
+</head>
+<body>
+<h1>Security Log Analysis Report</h1>
+<p>Generated: 2026-04-24 09:33:15 | Advanced Security Log Analyser</p>
+
+<h2>Summary</h2>
+<div class="grid">
+  <div class="box"><div class="num">28</div><div class="lbl">Total Requests</div></div>
+  <div class="box"><div class="num" style="color:#ff7b72">5</div><div class="lbl">Attacks Detected</div></div>
+  <div class="box"><div class="num" style="color:#f0883e">8</div><div class="lbl">Unique IPs</div></div>
+  <div class="box"><div class="num" style="color:#d29922">7</div><div class="lbl">Failed Logins</div></div>
+  <div class="box"><div class="num" style="color:#ff7b72">0</div><div class="lbl">Critical Risk IPs</div></div>
+  <div class="box"><div class="num">2</div><div class="lbl">Malicious Agents</div></div>
+</div>
+
+<h2>IP Risk Profiles</h2>
+<table>
+  <tr><th>IP Address</th><th>Location</th><th>Requests</th><th>Failed Logins</th><th>Attack Types</th><th>Agent</th><th>Risk</th></tr>
+  <tr>
+    <td><code>45.33.32.156</code></td>
+    <td>Fremont, United States [VPN/PROXY]</td>
+    <td>4</td>
+    <td>0</td>
+    <td>Directory Traversal, XSS Attack, Command Injection, SQL Injection</td>
+    <td><span class="badge red">sqlmap</span></td>
+    <td><span class="badge orange">HIGH (60/100)</span></td>
+  </tr>
+  <tr>
+    <td><code>198.51.100.77</code></td>
+    <td>Bucharest, Romania</td>
+    <td>4</td>
+    <td>0</td>
+    <td>Path Scanning</td>
+    <td><span class="badge red">nikto</span></td>
+    <td><span class="badge yellow">MEDIUM (38/100)</span></td>
+  </tr>
+  <tr>
+    <td><code>10.0.0.99</code></td>
+    <td>Local Network</td>
+    <td>5</td>
+    <td>0</td>
+    <td>Path Scanning</td>
+    <td>-</td>
+    <td><span class="badge yellow">MEDIUM (26/100)</span></td>
+  </tr>
+  <tr>
+    <td><code>185.220.101.45</code></td>
+    <td>Brandenburg, Germany [VPN/PROXY]</td>
+    <td>8</td>
+    <td>7</td>
+    <td>Brute Force Indicator</td>
+    <td>-</td>
+    <td><span class="badge green">LOW (24/100)</span></td>
+  </tr>
+  <tr>
+    <td><code>203.0.113.99</code></td>
+    <td>New York, United States</td>
+    <td>2</td>
+    <td>0</td>
+    <td>Shellshock, Log4Shell</td>
+    <td>-</td>
+    <td><span class="badge green">LOW (20/100)</span></td>
+  </tr>
+  <tr>
+    <td><code>192.168.1.10</code></td>
+    <td>Local Network</td>
+    <td>1</td>
+    <td>0</td>
+    <td>-</td>
+    <td>-</td>
+    <td><span class="badge green">LOW (0/100)</span></td>
+  </tr>
+  <tr>
+    <td><code>172.16.0.5</code></td>
+    <td>Local Network</td>
+    <td>2</td>
+    <td>0</td>
+    <td>-</td>
+    <td>-</td>
+    <td><span class="badge green">LOW (0/100)</span></td>
+  </tr>
+  <tr>
+    <td><code>192.168.1.20</code></td>
+    <td>Local Network</td>
+    <td>2</td>
+    <td>0</td>
+    <td>-</td>
+    <td>-</td>
+    <td><span class="badge green">LOW (0/100)</span></td>
+  </tr>
+</table>
+
+<h2>Attack Type Breakdown</h2>
+<table>
+  <tr><th>Attack Type</th><th>Count</th><th>Severity</th></tr><tr><td>Brute Force Indicator</td><td>7</td><td><span class="badge yellow">MEDIUM</span></td></tr><tr><td>Path Scanning</td><td>5</td><td><span class="badge yellow">MEDIUM</span></td></tr><tr><td>SQL Injection</td><td>1</td><td><span class="badge red">CRITICAL</span></td></tr><tr><td>XSS Attack</td><td>1</td><td><span class="badge orange">HIGH</span></td></tr><tr><td>Directory Traversal</td><td>1</td><td><span class="badge orange">HIGH</span></td></tr><tr><td>Command Injection</td><td>1</td><td><span class="badge red">CRITICAL</span></td></tr><tr><td>Log4Shell</td><td>1</td><td><span class="badge red">CRITICAL</span></td></tr><tr><td>Shellshock</td><td>1</td><td><span class="badge red">CRITICAL</span></td></tr>
+</table>
+
+<h2>HTTP Status Code Breakdown</h2>
+<table>
+  <tr><th>Status Code</th><th>Description</th><th>Count</th></tr><tr><td>200</td><td>OK</td><td>8</td></tr><tr><td>400</td><td>Bad Request</td><td>5</td></tr><tr><td>401</td><td>Unauthorised</td><td>7</td></tr><tr><td>403</td><td>Forbidden</td><td>3</td></tr><tr><td>404</td><td>Not Found</td><td>5</td></tr>
+</table>
+
+<div class="footer">
+  <p>Generated by Advanced Security Log Analyser</p>
+</div>
+</body>
+</html>
